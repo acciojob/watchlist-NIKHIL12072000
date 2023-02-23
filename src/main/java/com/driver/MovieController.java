@@ -49,4 +49,16 @@ public class MovieController {
     public List<String> findAllMovies(){
         return movieService.findAllMovies();
     }
+
+    @DeleteMapping("/movies/delete-all-directors")
+    public ResponseEntity<String> deleteAllDirectors(){
+        movieService.deleteAllDirectors();
+        return new ResponseEntity<>("All Directors Deleted",HttpStatus.OK);
+    }
+
+    @DeleteMapping("/movies/delete-director-by-name")
+    public ResponseEntity<String> deleteDirectorByName(@RequestParam("name") String name){
+        movieService.deleteDirectorByName(name);
+        return new ResponseEntity<>("Director Deleted",HttpStatus.OK);
+    }
 }

@@ -1,8 +1,6 @@
 package com.driver;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class MovieRepository {
     HashMap<String,Movie> movieMap;
@@ -50,5 +48,27 @@ public class MovieRepository {
         List<String> movies=new ArrayList<>();
         for(String movie:movieMap.keySet()) movies.add(movie);
         return movies;
+    }
+
+    public void deleteAllDirectors() {
+        Set<String> set=directorMap.keySet();
+        for(String director:set){
+            List<String> al;
+            al=directorMovieMap.get(director);
+            for(String movie:al) movieMap.remove(movie);
+            directorMovieMap.remove(director);
+            directorMap.remove(director);
+        }
+    }
+
+    public void deleteDirectorByName(String name) {
+        //From Director Map:
+        if(directorMap.containsKey(name))directorMap.remove(name);
+        List<String> al=new ArrayList<>();
+        if(directorMovieMap.containsKey(name)) {
+            al=directorMovieMap.get(name);
+            directorMovieMap.remove(name);
+        }
+        for(String movie: al) movieMap.remove(movie);
     }
 }

@@ -1,6 +1,7 @@
 package com.driver;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -35,5 +36,13 @@ public class MovieService {
 
     public List<String> findAllMovies() {
         return movieRepository.findAllMovies();
+    }
+
+    public void deleteAllDirectors() {
+         movieRepository.deleteAllDirectors();
+    }
+
+    public void deleteDirectorByName(String name) {
+        movieRepository.deleteDirectorByName(name);
     }
 }
