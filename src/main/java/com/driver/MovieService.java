@@ -23,9 +23,7 @@ public class MovieService {
         movieRepository.saveDirector(director);
     }
 
-    public void addMovieDirectorPair(String movie, String director) {
-        movieRepository.saveDirectorMovieMap(movie,director);
-    }
+    public void addMovieDirectorPair(String movie, String director) {movieRepository.saveDirectorMovieMap(movie,director);}
 
     public Movie getMovieByName(String name) {
         return movieRepository.findMovieByName(name);
@@ -43,11 +41,7 @@ public class MovieService {
         return movieRepository.findAllMovies();
     }
 
-    public void deleteAllDirectors() {
-         movieRepository.deleteAllDirectors();
-    }
+    public void deleteAllDirectors() {movieRepository.deleteAllDirectors();}
 
-    public void deleteDirectorByName(String name) {
-        movieRepository.deleteDirectorByName(name);
-    }
+    public void deleteDirectorByName(String name) {movieRepository.deleteDirectorByName(name);}
 }
