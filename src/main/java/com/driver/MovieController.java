@@ -31,23 +31,23 @@ public class MovieController {
     }
 
     @GetMapping("/movies/get-movie-by-name/{name}")
-    public Movie getMovieByName(@RequestParam("name") String name){
-        return movieService.getMovieByName(name);
+    public ResponseEntity<Movie> getMovieByName(@RequestParam("name") String name){
+        return new ResponseEntity<>(movieService.getMovieByName(name),HttpStatus.OK);
     }
 
     @GetMapping("/movies/get-director-by-name/{name}")
-    public Director getDirectorByName(@RequestParam("name") String name){
-        return movieService.getDirectorByName(name);
+    public ResponseEntity<Director> getDirectorByName(@RequestParam("name") String name){
+        return new ResponseEntity<>(movieService.getDirectorByName(name),HttpStatus.OK);
     }
 
     @GetMapping("/movies/get-movies-by-director-name/{director}")
-    public List<String> getMoviesByDirectorName(@RequestParam("director") String name){
-        return movieService.getMoviesByDirectorName(name);
+    public ResponseEntity<List<String>> getMoviesByDirectorName(@RequestParam("director") String name){
+        return new ResponseEntity<>(movieService.getMoviesByDirectorName(name),HttpStatus.OK);
     }
 
     @GetMapping("/movies/get-all-movies")
-    public List<String> findAllMovies(){
-        return movieService.findAllMovies();
+    public ResponseEntity<List<String>> findAllMovies(){
+        return new ResponseEntity<>(movieService.findAllMovies(),HttpStatus.OK);
     }
 
     @DeleteMapping("/movies/delete-all-directors")
